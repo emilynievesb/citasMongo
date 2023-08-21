@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { getDocBySpecialityController } from "../controllers/getControllers.js";
+import {
+  getDocBySpecialityController,
+  getPatientsAlphController,
+} from "../controllers/getControllers.js";
 import { getDocBySpecialityDTO } from "./DTO/getDTO.js";
 
 const getInitRoute = () => {
@@ -9,6 +12,7 @@ const getInitRoute = () => {
     getDocBySpecialityDTO,
     getDocBySpecialityController
   );
+  router.get("/pacientesalfabeticamente", getPatientsAlphController);
   return router;
 };
 

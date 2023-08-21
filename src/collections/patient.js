@@ -1,4 +1,4 @@
-import executeQuery from "../utils/db.js";
+import connection from "../utils/connect.js";
 
 class Patient {
   usu_id;
@@ -13,10 +13,10 @@ class Patient {
   usu_tipodoc;
   usu_genero;
   usu_acudiente;
-  constructor() {}
+  constructor() { }
   async connect() {
     try {
-      const result = await connection("medico");
+      const result = await connection("usuario");
       return result;
     } catch (error) {
       throw error;
@@ -27,39 +27,6 @@ class Patient {
       const connection = await this.connect();
       const resultado = await connection
         .aggregate([
-          {
-            $lookup: {
-              from: "genero",
-              localField: "usu_genero",
-              foreignField: "gen_id",
-              as: "genero",
-            },
-          },
-          {
-            $lookup: {
-              from: "tipo_documento",
-              localField: "usu_tipodoc",
-              foreignField: "tipdoc_id",
-              as: "tipo_documento",
-            },
-          },
-          {
-            $lookup: {
-              from: "acudiente",
-              localField: "usu_acudiente",
-              foreignField: "acu_codigo",
-              as: "acudiente",
-            },
-          },
-          {
-            $unwind: "$genero",
-          },
-          {
-            $unwind: "$tipo_documento",
-          },
-          {
-            $unwind: "$acudiente",
-          },
           {
             $project: {
               _id: 0,
@@ -72,9 +39,6 @@ class Patient {
               DireccionUsuario: "$usu_direccion",
               EmailUsuario: "$usu_e_mail",
               FechaNacimientoUsuario: "$usu_fechNac",
-              NombreGenero: "$genero.gen_nombre",
-              NombreTipoDocumento: "$tipo_documento.tipodoc_nombre",
-              NombreAcudiente: "$acudiente.acu_nombreCompleto",
             },
           },
           {

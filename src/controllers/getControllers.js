@@ -1,4 +1,7 @@
-import { getDocBySpeciality } from "../services/getServices.js";
+import {
+  getDocBySpeciality,
+  getPatientsAlph,
+} from "../services/getServices.js";
 
 const getDocBySpecialityController = async (req, res, next) => {
   try {
@@ -13,4 +16,13 @@ const getDocBySpecialityController = async (req, res, next) => {
     res.status(500).json(error);
   }
 };
-export { getDocBySpecialityController };
+
+const getPatientsAlphController = async (req, res, next) => {
+  try {
+    const result = await getPatientsAlph();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+export { getDocBySpecialityController, getPatientsAlphController };

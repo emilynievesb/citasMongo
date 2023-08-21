@@ -1,4 +1,5 @@
 import { Doctor } from "../collections/doctor.js";
+import { Patient } from "../collections/patient.js";
 
 const getDocBySpeciality = async (esp_nombre) => {
   const doctor = new Doctor();
@@ -8,4 +9,10 @@ const getDocBySpeciality = async (esp_nombre) => {
   return result;
 };
 
-export { getDocBySpeciality };
+const getPatientsAlph = async () => {
+  const patient = new Patient();
+  const result = await patient.getPatientsAlf();
+  return result;
+};
+
+export { getDocBySpeciality, getPatientsAlph };
