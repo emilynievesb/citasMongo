@@ -29,15 +29,14 @@ class Doctor {
           },
           {
             $match: {
-              "especialidad.esp_nombre": this.esp_nombre,
+              "especialidad.esp_nombre": { $eq: `${this.esp_nombre}` },
             },
           },
           {
             $project: {
               med_nroMatriculaProsional: 1,
               med_nombreCompleto: 1,
-              med_consultario: 1,
-              med_especialidad: 1,
+              Especialidad: "$especialidad.esp_nombre",
             },
           },
         ])
