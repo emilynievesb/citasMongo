@@ -1,0 +1,958 @@
+use("db_citas_campus");
+
+db.createCollection("genero", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["gen_id", "gen_nombre", "gen_abreviatura"],
+      properties: {
+        gen_id: {
+          bsonType: "int",
+          description: "Id del género",
+        },
+        gen_nombre: {
+          bsonType: "string",
+          description: "Nombre del género",
+        },
+        gen_abreviatura: {
+          bsonType: "string",
+          description: "Abreviatura del género",
+        },
+      },
+    },
+  },
+});
+
+db.genero.insertMany([
+  { gen_id: 1, gen_nombre: "Masculino", gen_abreviatura: "M" },
+  { gen_id: 2, gen_nombre: "Femenino", gen_abreviatura: "F" },
+]);
+
+db.createCollection("tipo_documento", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["tipdoc_id", "tipdoc_nombre", "tipdoc_abreviatura"],
+      properties: {
+        tipdoc_id: {
+          bsonType: "int",
+          description: "Id del tipo de documento",
+        },
+        tipdoc_nombre: {
+          bsonType: "string",
+          description: "Nombre del tipo de documento",
+        },
+        tipdoc_abreviatura: {
+          bsonType: "string",
+          description: "Abreviatura del tipo de documento",
+        },
+      },
+    },
+  },
+});
+
+db.tipo_documento.insertMany([
+  {
+    tipdoc_id: 1,
+    tipdoc_nombre: "Cédula de Ciudadanía",
+    tipdoc_abreviatura: "CC",
+  },
+  {
+    tipdoc_id: 2,
+    tipdoc_nombre: "Tarjeta de Identidad",
+    tipdoc_abreviatura: "TI",
+  },
+  {
+    tipdoc_id: 3,
+    tipdoc_nombre: "Cédula de Extranjería",
+    tipdoc_abreviatura: "CE",
+  },
+  {
+    tipdoc_id: 4,
+    tipdoc_nombre: "Registro Civil",
+    tipdoc_abreviatura: "RC",
+  },
+  {
+    tipdoc_id: 5,
+    tipdoc_nombre: "Pasaporte",
+    tipdoc_abreviatura: "PA",
+  },
+  {
+    tipdoc_id: 6,
+    tipdoc_nombre: "Registro Único Tributario",
+    tipdoc_abreviatura: "RUT",
+  },
+  {
+    tipdoc_id: 7,
+    tipdoc_nombre: "Documento Nacional de Identidad",
+    tipdoc_abreviatura: "DNI",
+  },
+  {
+    tipdoc_id: 8,
+    tipdoc_nombre: "Documento Único de Identidad",
+    tipdoc_abreviatura: "DUI",
+  },
+  {
+    tipdoc_id: 9,
+    tipdoc_nombre: "Número de Identificación Personal",
+    tipdoc_abreviatura: "NIP",
+  },
+  {
+    tipdoc_id: 10,
+    tipdoc_nombre: "Número de Seguro Social",
+    tipdoc_abreviatura: "NSS",
+  },
+]);
+
+db.createCollection("usuario", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "usu_id",
+        "usu_nombre",
+        "usu_segdo_nombre",
+        "usu_primer_apellido_usuar",
+        "usu_segdo_apellido_usuar",
+        "usu_telefono",
+        "usu_direccion",
+        "usu_e_mail",
+        "usu_fechNAc",
+        "usu_tipodoc",
+        "usu_genero",
+        "usu_acudiente",
+      ],
+      properties: {
+        usu_id: {
+          bsonType: "int",
+          description: "Id del usuario",
+        },
+        usu_nombre: {
+          bsonType: "string",
+          description: "Nombre del usuario",
+        },
+        usu_segdo_nombre: {
+          bsonType: "string",
+          description: "Segundo nombre del usuario",
+        },
+        usu_primer_apellido_usuar: {
+          bsonType: "string",
+          description: "Primer apellido del usuario",
+        },
+        usu_segdo_apellido_usuar: {
+          bsonType: "string",
+          description: "Segundo apellido del usuario",
+        },
+        usu_telefono: {
+          bsonType: "double",
+          description: "Telefono del usuario",
+        },
+        usu_direccion: {
+          bsonType: "string",
+          description: "Direccion del usuario",
+        },
+        usu_e_mail: {
+          bsonType: "string",
+          description: "Email del usuario",
+        },
+        usu_fechNAc: {
+          bsonType: "date",
+          description: "Fecha de nacimiento del usuario",
+        },
+        usu_tipodoc: {
+          bsonType: "int",
+          description: "Tipo de documento del usuario",
+        },
+        usu_genero: {
+          bsonType: "int",
+          description: "Genero del usuario",
+        },
+        usu_acudiente: {
+          bsonType: ["int", "null"],
+          description: "Acudiente del usuario",
+        },
+      },
+    },
+  },
+});
+
+db.usuario.insertMany([
+  {
+    usu_id: 1098817567,
+    usu_nombre: "Daniela",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Zapata",
+    usu_segdo_apellido_usuar: "Mora",
+    usu_telefono: 3158696969,
+    usu_direccion: "Parque de los gatos",
+    usu_e_mail: "daniela@gmail.com",
+    usu_fechNAc: new Date("2005-05-11"),
+    usu_tipodoc: 1,
+    usu_genero: 1,
+    usu_acudiente: 1,
+  },
+  {
+    usu_id: 123,
+    usu_nombre: "Andres",
+    usu_segdo_nombre: "Santiago",
+    usu_primer_apellido_usuar: "Carvajal",
+    usu_segdo_apellido_usuar: "Peliño",
+    usu_telefono: 3154784596,
+    usu_direccion: "Bucaramanga",
+    usu_e_mail: "santiagoyo@gmail.com",
+    usu_fechNAc: new Date("2000-02-12"),
+    usu_tipodoc: 2,
+    usu_genero: 2,
+    usu_acudiente: 2,
+  },
+  {
+    usu_id: 321,
+    usu_nombre: "Fabio",
+    usu_segdo_nombre: "Alberto",
+    usu_primer_apellido_usuar: "Morales",
+    usu_segdo_apellido_usuar: "Petriño",
+    usu_telefono: 3174578496,
+    usu_direccion: "Giron",
+    usu_e_mail: "fabio478@outlook.es",
+    usu_fechNAc: new Date("1999-01-01"),
+    usu_tipodoc: 1,
+    usu_genero: 3,
+    usu_acudiente: 2,
+  },
+  {
+    usu_id: 74,
+    usu_nombre: "Alejandra",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Mantilla",
+    usu_segdo_apellido_usuar: "Garcia",
+    usu_telefono: 3007845647,
+    usu_direccion: "Lebrija",
+    usu_e_mail: "aleja78@outlook.es",
+    usu_fechNAc: new Date("2015-03-21"),
+    usu_tipodoc: 3,
+    usu_genero: 3,
+    usu_acudiente: 3,
+  },
+  {
+    usu_id: 555555,
+    usu_nombre: "Luis",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Gonzalez",
+    usu_segdo_apellido_usuar: "Hernandez",
+    usu_telefono: 3123456789,
+    usu_direccion: "Bogotá",
+    usu_e_mail: "luisgh@gmail.com",
+    usu_fechNAc: new Date("1987-07-15"),
+    usu_tipodoc: 1,
+    usu_genero: 1,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 666666,
+    usu_nombre: "Laura",
+    usu_segdo_nombre: "Isabel",
+    usu_primer_apellido_usuar: "Vargas",
+    usu_segdo_apellido_usuar: "Lopez",
+    usu_telefono: 3145678901,
+    usu_direccion: "Medellín",
+    usu_e_mail: "lauravl@gmail.com",
+    usu_fechNAc: new Date("1992-11-28"),
+    usu_tipodoc: 2,
+    usu_genero: 2,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 777777,
+    usu_nombre: "Carlos",
+    usu_segdo_nombre: "Andres",
+    usu_primer_apellido_usuar: "Perez",
+    usu_segdo_apellido_usuar: "Gomez",
+    usu_telefono: 3156789012,
+    usu_direccion: "Cali",
+    usu_e_mail: "carlospg@gmail.com",
+    usu_fechNAc: new Date("1985-09-02"),
+    usu_tipodoc: 3,
+    usu_genero: 3,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 888888,
+    usu_nombre: "María",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Rodriguez",
+    usu_segdo_apellido_usuar: "Santos",
+    usu_telefono: 3184567890,
+    usu_direccion: "Cartagena",
+    usu_e_mail: "mariars@gmail.com",
+    usu_fechNAc: new Date("1998-04-17"),
+    usu_tipodoc: 1,
+    usu_genero: 1,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 999999,
+    usu_nombre: "Camila",
+    usu_segdo_nombre: "Alejandra",
+    usu_primer_apellido_usuar: "Ramirez",
+    usu_segdo_apellido_usuar: "Torres",
+    usu_telefono: 3195678901,
+    usu_direccion: "Barranquilla",
+    usu_e_mail: "camilart@gmail.com",
+    usu_fechNAc: new Date("2002-06-10"),
+    usu_tipodoc: 2,
+    usu_genero: 2,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 101010,
+    usu_nombre: "Juan",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Garcia",
+    usu_segdo_apellido_usuar: "Castro",
+    usu_telefono: 3106789012,
+    usu_direccion: "Santa Marta",
+    usu_e_mail: "juangc@gmail.com",
+    usu_fechNAc: new Date("1995-12-04"),
+    usu_tipodoc: 3,
+    usu_genero: 3,
+    usu_acudiente: null,
+  },
+  {
+    usu_id: 111111,
+    usu_nombre: "Sofia",
+    usu_segdo_nombre: "Valentina",
+    usu_primer_apellido_usuar: "Lopez",
+    usu_segdo_apellido_usuar: "Rojas",
+    usu_telefono: 3137890123,
+    usu_direccion: "Pasto",
+    usu_e_mail: "sofialr@gmail.com",
+    usu_fechNAc: new Date("2008-09-19"),
+    usu_tipodoc: 1,
+    usu_genero: 1,
+    usu_acudiente: 4,
+  },
+  {
+    usu_id: 121212,
+    usu_nombre: "Diego",
+    usu_segdo_nombre: "",
+    usu_primer_apellido_usuar: "Gomez",
+    usu_segdo_apellido_usuar: "Hernandez",
+    usu_telefono: 3178901234,
+    usu_direccion: "Manizales",
+    usu_e_mail: "diegogh@gmail.com",
+    usu_fechNAc: new Date("2001-03-08"),
+    usu_tipodoc: 2,
+    usu_genero: 2,
+    usu_acudiente: 5,
+  },
+  {
+    usu_id: 131313,
+    usu_nombre: "Carolina",
+    usu_segdo_nombre: "Andrea",
+    usu_primer_apellido_usuar: "Perez",
+    usu_segdo_apellido_usuar: "Gomez",
+    usu_telefono: 3169012345,
+    usu_direccion: "Pereira",
+    usu_e_mail: "carolpg@gmail.com",
+    usu_fechNAc: new Date("2010-07-25"),
+    usu_tipodoc: 3,
+    usu_genero: 3,
+    usu_acudiente: 6,
+  },
+]);
+
+db.createCollection("cita", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "cit_codigo",
+        "cit_fecha",
+        "cit_estadoCita",
+        "cit_medico",
+        "cit_datosUsuario",
+      ],
+      properties: {
+        cit_codigo: {
+          bsonType: "int",
+          description: "Id de la cita",
+        },
+        cit_fecha: {
+          bsonType: "date",
+          description: "Fecha de la cita",
+        },
+        cit_estadoCita: {
+          bsonType: "int",
+          description: "Estado de la cita",
+        },
+        cit_medico: {
+          bsonType: "int",
+          description: "Medico de la cita",
+        },
+        cit_datosUsuario: {
+          bsonType: "int",
+          description: "Usuario de la cita",
+        },
+      },
+    },
+  },
+});
+
+db.cita.insertMany([
+  {
+    cit_codigo: 1,
+    cit_fecha: new Date("2023-07-12"),
+    cit_estadoCita: 1,
+    cit_medico: 12345,
+    cit_datosUsuario: 1,
+  },
+  {
+    cit_codigo: 2,
+    cit_fecha: new Date("2023-07-12"),
+    cit_estadoCita: 1,
+    cit_medico: 54321,
+    cit_datosUsuario: 2,
+  },
+  {
+    cit_codigo: 3,
+    cit_fecha: new Date("2023-07-12"),
+    cit_estadoCita: 1,
+    cit_medico: 98765,
+    cit_datosUsuario: 3,
+  },
+  {
+    cit_codigo: 4,
+    cit_fecha: new Date("2023-07-13"),
+    cit_estadoCita: 1,
+    cit_medico: 67890,
+    cit_datosUsuario: 4,
+  },
+  {
+    cit_codigo: 5,
+    cit_fecha: new Date("2023-07-13"),
+    cit_estadoCita: 1,
+    cit_medico: 13579,
+    cit_datosUsuario: 5,
+  },
+  {
+    cit_codigo: 6,
+    cit_fecha: new Date("2023-07-13"),
+    cit_estadoCita: 1,
+    cit_medico: 97531,
+    cit_datosUsuario: 6,
+  },
+  {
+    cit_codigo: 7,
+    cit_fecha: new Date("2023-07-14"),
+    cit_estadoCita: 1,
+    cit_medico: 86420,
+    cit_datosUsuario: 7,
+  },
+  {
+    cit_codigo: 8,
+    cit_fecha: new Date("2023-07-14"),
+    cit_estadoCita: 1,
+    cit_medico: 24680,
+    cit_datosUsuario: 8,
+  },
+  {
+    cit_codigo: 9,
+    cit_fecha: new Date("2023-07-14"),
+    cit_estadoCita: 1,
+    cit_medico: 75319,
+    cit_datosUsuario: 9,
+  },
+  {
+    cit_codigo: 10,
+    cit_fecha: new Date("2023-07-15"),
+    cit_estadoCita: 1,
+    cit_medico: 10293,
+    cit_datosUsuario: 10,
+  },
+  {
+    cit_codigo: 11,
+    cit_fecha: new Date("2023-07-15"),
+    cit_estadoCita: 1,
+    cit_medico: 19876,
+    cit_datosUsuario: 1,
+  },
+  {
+    cit_codigo: 12,
+    cit_fecha: new Date("2023-07-15"),
+    cit_estadoCita: 1,
+    cit_medico: 56789,
+    cit_datosUsuario: 2,
+  },
+  {
+    cit_codigo: 13,
+    cit_fecha: new Date("2023-07-16"),
+    cit_estadoCita: 1,
+    cit_medico: 43210,
+    cit_datosUsuario: 3,
+  },
+  {
+    cit_codigo: 14,
+    cit_fecha: new Date("2023-07-16"),
+    cit_estadoCita: 1,
+    cit_medico: 87654,
+    cit_datosUsuario: 4,
+  },
+  {
+    cit_codigo: 15,
+    cit_fecha: new Date("2023-07-16"),
+    cit_estadoCita: 1,
+    cit_medico: 21987,
+    cit_datosUsuario: 5,
+  },
+  {
+    cit_codigo: 16,
+    cit_fecha: new Date("2023-07-17"),
+    cit_estadoCita: 1,
+    cit_medico: 65432,
+    cit_datosUsuario: 6,
+  },
+  {
+    cit_codigo: 17,
+    cit_fecha: new Date("2023-07-17"),
+    cit_estadoCita: 1,
+    cit_medico: 98761,
+    cit_datosUsuario: 7,
+  },
+  {
+    cit_codigo: 18,
+    cit_fecha: new Date("2023-07-17"),
+    cit_estadoCita: 1,
+    cit_medico: 34567,
+    cit_datosUsuario: 8,
+  },
+  {
+    cit_codigo: 19,
+    cit_fecha: new Date("2023-07-18"),
+    cit_estadoCita: 1,
+    cit_medico: 76123,
+    cit_datosUsuario: 9,
+  },
+  {
+    cit_codigo: 20,
+    cit_fecha: new Date("2023-07-18"),
+    cit_estadoCita: 1,
+    cit_medico: 23456,
+    cit_datosUsuario: 10,
+  },
+  {
+    cit_codigo: 21,
+    cit_fecha: new Date("2023-07-18"),
+    cit_estadoCita: 1,
+    cit_medico: 12345,
+    cit_datosUsuario: 1,
+  },
+  {
+    cit_codigo: 22,
+    cit_fecha: new Date("2023-07-19"),
+    cit_estadoCita: 1,
+    cit_medico: 54321,
+    cit_datosUsuario: 2,
+  },
+  {
+    cit_codigo: 23,
+    cit_fecha: new Date("2023-07-19"),
+    cit_estadoCita: 1,
+    cit_medico: 98765,
+    cit_datosUsuario: 3,
+  },
+  {
+    cit_codigo: 24,
+    cit_fecha: new Date("2023-07-20"),
+    cit_estadoCita: 1,
+    cit_medico: 67890,
+    cit_datosUsuario: 4,
+  },
+  {
+    cit_codigo: 25,
+    cit_fecha: new Date("2023-07-20"),
+    cit_estadoCita: 1,
+    cit_medico: 13579,
+    cit_datosUsuario: 5,
+  },
+  {
+    cit_codigo: 26,
+    cit_fecha: new Date("2023-07-20"),
+    cit_estadoCita: 1,
+    cit_medico: 97531,
+    cit_datosUsuario: 6,
+  },
+  {
+    cit_codigo: 27,
+    cit_fecha: new Date("2023-07-21"),
+    cit_estadoCita: 1,
+    cit_medico: 86420,
+    cit_datosUsuario: 7,
+  },
+  {
+    cit_codigo: 28,
+    cit_fecha: new Date("2023-07-21"),
+    cit_estadoCita: 1,
+    cit_medico: 24680,
+    cit_datosUsuario: 8,
+  },
+  {
+    cit_codigo: 29,
+    cit_fecha: new Date("2023-07-21"),
+    cit_estadoCita: 1,
+    cit_medico: 75319,
+    cit_datosUsuario: 9,
+  },
+  {
+    cit_codigo: 30,
+    cit_fecha: new Date("2023-07-22"),
+    cit_estadoCita: 1,
+    cit_medico: 10293,
+    cit_datosUsuario: 10,
+  },
+]);
+
+db.createCollection("estado_cita", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["estcita_id", "estcita_nombre"],
+      properties: {
+        estcita_id: {
+          bsonType: "int",
+          description: "Id del estado cita",
+        },
+        estcita_nombre: {
+          bsonType: "string",
+          description: "Nombre del estado cita",
+        },
+      },
+    },
+  },
+});
+
+db.estado_cita.insertMany([
+  { estcita_id: 1, estcita_nombre: "Pendiente" },
+  { estcita_id: 2, estcita_nombre: "Confirmada" },
+  { estcita_id: 3, estcita_nombre: "Cancelada" },
+  { estcita_id: 4, estcita_nombre: "En curso" },
+  { estcita_id: 5, estcita_nombre: "Finalizada" },
+  { estcita_id: 6, estcita_nombre: "Reprogramada" },
+  { estcita_id: 7, estcita_nombre: "Ausente" },
+  { estcita_id: 8, estcita_nombre: "Suspendida" },
+  { estcita_id: 9, estcita_nombre: "No asistió" },
+  { estcita_id: 10, estcita_nombre: "En espera" },
+]);
+
+db.createCollection("medico", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "med_nroMatriculaProfesional",
+        "med_nombreCompleto",
+        "med_consultorio",
+        "med_especialidad",
+      ],
+      properties: {
+        med_nroMatriculaProfesional: {
+          bsonType: "int",
+          description: "Número de matricula profesional del médico",
+        },
+        med_nombreCompleto: {
+          bsonType: "string",
+          description: "Nombre del médico",
+        },
+        med_consultorio: {
+          bsonType: "int",
+          description: "Consultorio del médico",
+        },
+        med_especialidad: {
+          bsonType: "int",
+          description: "Especialidad del médico",
+        },
+      },
+    },
+  },
+});
+
+db.medico.insertMany([
+  {
+    med_nroMatriculaProfesional: 12345,
+    med_nombreCompleto: "Juan Carlos Gómez",
+    med_consultorio: 1,
+    med_especialidad: 1,
+  },
+  {
+    med_nroMatriculaProfesional: 54321,
+    med_nombreCompleto: "María Fernanda Rodríguez",
+    med_consultorio: 2,
+    med_especialidad: 2,
+  },
+  {
+    med_nroMatriculaProfesional: 98765,
+    med_nombreCompleto: "Pedro Pablo Martínez",
+    med_consultorio: 3,
+    med_especialidad: 3,
+  },
+  {
+    med_nroMatriculaProfesional: 67890,
+    med_nombreCompleto: "Ana Isabel Ramírez",
+    med_consultorio: 4,
+    med_especialidad: 4,
+  },
+  {
+    med_nroMatriculaProfesional: 13579,
+    med_nombreCompleto: "Luis Alberto Hernández",
+    med_consultorio: 5,
+    med_especialidad: 5,
+  },
+  {
+    med_nroMatriculaProfesional: 97531,
+    med_nombreCompleto: "Sara Elena García",
+    med_consultorio: 6,
+    med_especialidad: 6,
+  },
+  {
+    med_nroMatriculaProfesional: 86420,
+    med_nombreCompleto: "Miguel Ángel López",
+    med_consultorio: 7,
+    med_especialidad: 7,
+  },
+  {
+    med_nroMatriculaProfesional: 24680,
+    med_nombreCompleto: "Isabel María Díaz",
+    med_consultorio: 8,
+    med_especialidad: 8,
+  },
+  {
+    med_nroMatriculaProfesional: 75319,
+    med_nombreCompleto: "Marcela Alejandra Ortega",
+    med_consultorio: 9,
+    med_especialidad: 9,
+  },
+  {
+    med_nroMatriculaProfesional: 10293,
+    med_nombreCompleto: "Andrés Felipe Vargas",
+    med_consultorio: 10,
+    med_especialidad: 10,
+  },
+  {
+    med_nroMatriculaProfesional: 19876,
+    med_nombreCompleto: "Laura González",
+    med_consultorio: 1,
+    med_especialidad: 2,
+  },
+  {
+    med_nroMatriculaProfesional: 56789,
+    med_nombreCompleto: "Carlos Sánchez",
+    med_consultorio: 2,
+    med_especialidad: 3,
+  },
+  {
+    med_nroMatriculaProfesional: 43210,
+    med_nombreCompleto: "Patricia Martínez",
+    med_consultorio: 3,
+    med_especialidad: 4,
+  },
+  {
+    med_nroMatriculaProfesional: 87654,
+    med_nombreCompleto: "Fernando Herrera",
+    med_consultorio: 4,
+    med_especialidad: 5,
+  },
+  {
+    med_nroMatriculaProfesional: 21987,
+    med_nombreCompleto: "Mónica López",
+    med_consultorio: 5,
+    med_especialidad: 6,
+  },
+  {
+    med_nroMatriculaProfesional: 65432,
+    med_nombreCompleto: "Roberto González",
+    med_consultorio: 6,
+    med_especialidad: 7,
+  },
+  {
+    med_nroMatriculaProfesional: 98761,
+    med_nombreCompleto: "Carolina Pérez",
+    med_consultorio: 7,
+    med_especialidad: 8,
+  },
+  {
+    med_nroMatriculaProfesional: 34567,
+    med_nombreCompleto: "Diego Castro",
+    med_consultorio: 8,
+    med_especialidad: 9,
+  },
+  {
+    med_nroMatriculaProfesional: 76123,
+    med_nombreCompleto: "Daniela Ríos",
+    med_consultorio: 9,
+    med_especialidad: 10,
+  },
+  {
+    med_nroMatriculaProfesional: 23456,
+    med_nombreCompleto: "Andrea Suárez",
+    med_consultorio: 10,
+    med_especialidad: 1,
+  },
+]);
+
+db.createCollection("especialidad", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["esp_id", "esp_nombre"],
+      properties: {
+        esp_id: {
+          bsonType: "int",
+          description: "Id de la especialidad",
+        },
+        esp_nombre: {
+          bsonType: "string",
+          description: "Nombre de la especialidad",
+        },
+      },
+    },
+  },
+});
+
+db.especialidad.insertMany([
+  { esp_id: 1, esp_nombre: "Cardiología" },
+  { esp_id: 2, esp_nombre: "Dermatología" },
+  { esp_id: 3, esp_nombre: "Endocrinología" },
+  { esp_id: 4, esp_nombre: "Gastroenterología" },
+  { esp_id: 5, esp_nombre: "Neurología" },
+  { esp_id: 6, esp_nombre: "Oftalmología" },
+  { esp_id: 7, esp_nombre: "Pediatría" },
+  { esp_id: 8, esp_nombre: "Psiquiatría" },
+  { esp_id: 9, esp_nombre: "Traumatología" },
+  { esp_id: 10, esp_nombre: "Urología" },
+]);
+
+db.createCollection("consultorio", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["cons_codigo", "cons_nombre"],
+      properties: {
+        cons_codigo: {
+          bsonType: "int",
+          description: "Id del consultorio",
+        },
+        cons_nombre: {
+          bsonType: "string",
+          description: "Nombre del consultorio",
+        },
+      },
+    },
+  },
+});
+
+db.consultorio.insertMany([
+  { cons_codigo: 1, cons_nombre: "Consultorio 1" },
+  { cons_codigo: 2, cons_nombre: "Consultorio 2" },
+  { cons_codigo: 3, cons_nombre: "Consultorio 3" },
+  { cons_codigo: 4, cons_nombre: "Consultorio 4" },
+  { cons_codigo: 5, cons_nombre: "Consultorio 5" },
+  { cons_codigo: 6, cons_nombre: "Consultorio 6" },
+  { cons_codigo: 7, cons_nombre: "Consultorio 7" },
+  { cons_codigo: 8, cons_nombre: "Consultorio 8" },
+  { cons_codigo: 9, cons_nombre: "Consultorio 9" },
+  { cons_codigo: 10, cons_nombre: "Consultorio 10" },
+]);
+
+db.createCollection("acudiente", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "acu_codigo",
+        "acu_nombreCompleto",
+        "acu_telefono",
+        "acu_direccion",
+      ],
+      properties: {
+        acu_codigo: {
+          bsonType: "int",
+          description: "Id de la cita",
+        },
+        acu_nombreCompleto: {
+          bsonType: "string",
+          description: "Nombre completo del acudiente",
+        },
+        acu_telefono: {
+          bsonType: "string",
+          description: "Telefono del acudiente",
+        },
+        acu_direccion: {
+          bsonType: "string",
+          description: "Dirección del acudiente",
+        },
+      },
+    },
+  },
+});
+
+db.acudiente.insertMany([
+  {
+    acu_codigo: 1,
+    acu_nombreCompleto: "María Rodríguez",
+    acu_telefono: "1234567890",
+    acu_direccion: "Calle Principal 123",
+  },
+  {
+    acu_codigo: 2,
+    acu_nombreCompleto: "Carlos Pérez",
+    acu_telefono: "9876543210",
+    acu_direccion: "Avenida Central 456",
+  },
+  {
+    acu_codigo: 3,
+    acu_nombreCompleto: "Ana Martínez",
+    acu_telefono: "5555555555",
+    acu_direccion: "Carrera 7 890",
+  },
+  {
+    acu_codigo: 4,
+    acu_nombreCompleto: "Pedro Ramírez",
+    acu_telefono: "1111111111",
+    acu_direccion: "Plaza Mayor 789",
+  },
+  {
+    acu_codigo: 5,
+    acu_nombreCompleto: "Sara Hernández",
+    acu_telefono: "9999999999",
+    acu_direccion: "Callejón Secreto 12",
+  },
+  {
+    acu_codigo: 6,
+    acu_nombreCompleto: "Luis García",
+    acu_telefono: "6666666666",
+    acu_direccion: "Avenida Principal 345",
+  },
+  {
+    acu_codigo: 7,
+    acu_nombreCompleto: "Isabel López",
+    acu_telefono: "7777777777",
+    acu_direccion: "Carrera 9 678",
+  },
+  {
+    acu_codigo: 8,
+    acu_nombreCompleto: "Miguel Díaz",
+    acu_telefono: "2222222222",
+    acu_direccion: "Plaza Central 567",
+  },
+  {
+    acu_codigo: 9,
+    acu_nombreCompleto: "Andrés Ortega",
+    acu_telefono: "8888888888",
+    acu_direccion: "Callejón Oscuro 23",
+  },
+  {
+    acu_codigo: 10,
+    acu_nombreCompleto: "Marcela Vargas",
+    acu_telefono: "3333333333",
+    acu_direccion: "Avenida Principal 890",
+  },
+]);
