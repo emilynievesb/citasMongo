@@ -36,7 +36,7 @@ class Date {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
@@ -78,6 +78,7 @@ class Date {
           },
         ])
         .toArray();
+      console.log(resultado);
       return resultado;
     } catch (error) {
       throw error;

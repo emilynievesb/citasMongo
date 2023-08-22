@@ -1,3 +1,4 @@
+import { Date } from "../collections/date.js";
 import { Doctor } from "../collections/doctor.js";
 import { Patient } from "../collections/patient.js";
 
@@ -15,4 +16,10 @@ const getPatientsAlph = async () => {
   return result;
 };
 
-export { getDocBySpeciality, getPatientsAlph };
+const getDatesAlph = async () => {
+  const date = new Date();
+  const result = await date.getDatesAlf();
+  return result;
+};
+
+export { getDocBySpeciality, getPatientsAlph, getDatesAlph };
