@@ -50,20 +50,22 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
     - Datos de salida:
 
       ```
-      [
-        {
-            "med_nroMatriculaProsional": 12345,
-            "med_nombreCompleto": "Juan Carlos Gómez",
-            "med_consultario": 1,
-            "med_especialidad": 1
-        },
-        {
-            "med_nroMatriculaProsional": 23456,
-            "med_nombreCompleto": "Andrea Suárez",
-            "med_consultario": 10,
-            "med_especialidad": 1
-        }
-      ]
+        [
+            {
+                "_id": "64e506f0e72253b25a77181c",
+                "med_nombreCompleto": "Juan Carlos Gómez",
+                "Especialidad": [
+                    "Cardiología"
+                ]
+            },
+            {
+                "_id": "64e506f0e72253b25a77182f",
+                "med_nombreCompleto": "Andrea Suárez",
+                "Especialidad": [
+                    "Cardiología"
+                ]
+            }
+        ]
       ```
 
 1.  Obten todos los pacientes alfabéticamente
@@ -74,36 +76,48 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
     - Datos de salida:
 
       ```
-      [
-          {
-              "UsuarioID": 123,
-              "PrimerNombreUsuario": "Andres",
-              "SegundoNombreUsuario": "Santiago",
-              "PrimerApellidoUsuario": "Carvajal",
-              "SegundoApellidoUsuario": "Peliño",
-              "UsuarioTelefono": "3154784596",
-              "DireccionUsuario": "Bucaramanga",
-              "EmailUsuario": "santiagoyo@gmail.com",
-              "FechaNacimientoUsuario": "2000-02-12T05:00:00.000Z",
-              "NombreGenero": "Femenino",
-              "NombreTipoDocumento": "Tarjeta de Identidad",
-              "NombreAcudiente": "Carlos Pérez"
-          },
-          {
-              "UsuarioID": 121212,
-              "PrimerNombreUsuario": "Diego",
-              "SegundoNombreUsuario": "",
-              "PrimerApellidoUsuario": "Gomez",
-              "SegundoApellidoUsuario": "Hernandez",
-              "UsuarioTelefono": "3178901234",
-              "DireccionUsuario": "Manizales",
-              "EmailUsuario": "diegogh@gmail.com",
-              "FechaNacimientoUsuario": "2001-03-08T05:00:00.000Z",
-              "NombreGenero": "Femenino",
-              "NombreTipoDocumento": "Tarjeta de Identidad",
-              "NombreAcudiente": "Sara Hernández"
-          }
-      ]
+        [
+            {
+                "UsuarioID": 123,
+                "PrimerNombreUsuario": "Andres",
+                "SegundoNombreUsuario": "Santiago",
+                "PrimerApellidoUsuario": "Carvajal",
+                "SegundoApellidoUsuario": "Peliño",
+                "UsuarioTelefono": 3154784596,
+                "DireccionUsuario": "Bucaramanga",
+                "EmailUsuario": "santiagoyo@gmail.com"
+            },
+            {
+                "UsuarioID": 101010,
+                "PrimerNombreUsuario": "Juan",
+                "SegundoNombreUsuario": "",
+                "PrimerApellidoUsuario": "Garcia",
+                "SegundoApellidoUsuario": "Castro",
+                "UsuarioTelefono": 3106789012,
+                "DireccionUsuario": "Santa Marta",
+                "EmailUsuario": "juangc@gmail.com"
+            },
+            {
+                "UsuarioID": 121212,
+                "PrimerNombreUsuario": "Diego",
+                "SegundoNombreUsuario": "",
+                "PrimerApellidoUsuario": "Gomez",
+                "SegundoApellidoUsuario": "Hernandez",
+                "UsuarioTelefono": 3178901234,
+                "DireccionUsuario": "Manizales",
+                "EmailUsuario": "diegogh@gmail.com"
+            },
+            {
+                "UsuarioID": 555555,
+                "PrimerNombreUsuario": "Luis",
+                "SegundoNombreUsuario": "",
+                "PrimerApellidoUsuario": "Gonzalez",
+                "SegundoApellidoUsuario": "Hernandez",
+                "UsuarioTelefono": 3123456789,
+                "DireccionUsuario": "Bogotá",
+                "EmailUsuario": "luisgh@gmail.com"
+            }
+        ]
       ```
 
 1.  Obten todas las citas alfabéticamente
@@ -116,56 +130,95 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
       ```
           [
             {
-                "CodigoCita": 1,
-                "FechaCita": "2023-07-14T05:00:00.000Z",
-                "IdEstadoCita": 1,
-                "EstadoCita": "Pendiente",
-                "MedicoID": 12345,
-                "MedicoNombre": "Juan Carlos Gómez",
+                "_id": "64e506efe72253b25a7717fa",
+                "CodigoCita": 7,
+                "FechaCita": "2023-07-14T00:00:00.000Z",
+                "IdEstadoCita": 2,
+                "EstadoCita": "Confirmada",
+                "MedicoID": 86420,
+                "MedicoNombre": "Miguel Ángel López",
                 "UsuarioID": 123,
                 "PrimerApellido": "Carvajal",
                 "Nombre": "Andres"
             },
             {
+                "_id": "64e506efe72253b25a7717fb",
+                "CodigoCita": 8,
+                "FechaCita": "2023-07-14T00:00:00.000Z",
+                "IdEstadoCita": 1,
+                "EstadoCita": "Pendiente",
+                "MedicoID": 24680,
+                "MedicoNombre": "Isabel María Díaz",
+                "UsuarioID": 123,
+                "PrimerApellido": "Carvajal",
+                "Nombre": "Andres"
+            },
+            {
+                "_id": "64e506f0e72253b25a7717fc",
                 "CodigoCita": 9,
-                "FechaCita": "2023-07-22T05:00:00.000Z",
-                "IdEstadoCita": 9,
-                "EstadoCita": "No asistió",
+                "FechaCita": "2023-07-14T00:00:00.000Z",
+                "IdEstadoCita": 1,
+                "EstadoCita": "Pendiente",
                 "MedicoID": 75319,
                 "MedicoNombre": "Marcela Alejandra Ortega",
+                "UsuarioID": 123,
+                "PrimerApellido": "Carvajal",
+                "Nombre": "Andres"
+            },
+            {
+                "_id": "64e506f0e72253b25a771809",
+                "CodigoCita": 22,
+                "FechaCita": "2023-07-19T00:00:00.000Z",
+                "IdEstadoCita": 1,
+                "EstadoCita": "Pendiente",
+                "MedicoID": 54321,
+                "MedicoNombre": "María Fernanda Rodríguez",
+                "UsuarioID": 123,
+                "PrimerApellido": "Carvajal",
+                "Nombre": "Andres"
+            },
+            {
+                "_id": "64e506efe72253b25a7717f6",
+                "CodigoCita": 3,
+                "FechaCita": "2023-07-12T00:00:00.000Z",
+                "IdEstadoCita": 2,
+                "EstadoCita": "Confirmada",
+                "MedicoID": 98765,
+                "MedicoNombre": "Pedro Pablo Martínez",
                 "UsuarioID": 101010,
                 "PrimerApellido": "Garcia",
                 "Nombre": "Juan"
             }
-          ]
+        ]
       ```
 
 1.  Encontra la próxima cita para un paciente específico
 
-    - URL: `http://127.20.30.1:5005/api/get/citaproxima?usuario=74`
+    - URL: `http://127.20.30.1:5005/api/get/citaproxima?usuario=888888`
     - Método: `GET`
     - Datos de entrada (query): ID del usuario a consultar. Recuerda cambiar en la URL luego del `=` el id del usuario a consultar
     - Datos de salida:
 
       ```
-      [
-          {
-              "CodigoCita": 3,
-              "FechaCita": "2023-07-16T05:00:00.000Z",
-              "IdEstadoCita": 3,
-              "EstadoCita": "Cancelada",
-              "MedicoID": 98765,
-              "MedicoNombre": "Pedro Pablo Martínez",
-              "UsuarioID": 74,
-              "PrimerApellido": "Mantilla",
-              "Nombre": "Alejandra"
-          }
-      ]
+        [
+            {
+                "_id": "64e506f0e72253b25a771810",
+                "CodigoCita": 29,
+                "FechaCita": "2023-09-21T00:00:00.000Z",
+                "IdEstadoCita": 1,
+                "EstadoCita": "Pendiente",
+                "MedicoID": 75319,
+                "MedicoNombre": "Marcela Alejandra Ortega",
+                "UsuarioID": 888888,
+                "PrimerApellido": "Rodriguez",
+                "Nombre": "María"
+            }
+        ]
       ```
 
 1.  Encuentra todos los pacientes que tienen citas con un médico específico
 
-    - URL: `http://127.20.30.1:5005/api/get/citaspormedico?id_medico=56789`
+    - URL: `http://127.20.30.1:5005/api/get/citaspormedico?id_medico=86420`
     - Método: `GET`
     - Datos de entrada (query): ID del medico a consultar. Recuerda cambiar en la URL luego del `=` el id del medico a consultar
     - Datos de salida:
@@ -173,62 +226,102 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
       ```
         [
             {
-                "NombrePaciente": "Carolina",
-                "ApellidoPaciente": "Perez",
-                "FechaCita": "2023-07-25T05:00:00.000Z",
-                "NombreEspecialidad": "Endocrinología",
-                "NombreConsultorio": "Consultorio 2"
+                "_id": "64e506efe72253b25a7717fa",
+                "NombrePaciente": "Andres",
+                "ApellidoPaciente": "Carvajal",
+                "FechaCita": "2023-07-14T00:00:00.000Z",
+                "NombreEspecialidad": "Pediatría",
+                "NombreConsultorio": "Consultorio 7"
+            },
+            {
+                "_id": "64e506f0e72253b25a77180e",
+                "NombrePaciente": "Camila",
+                "ApellidoPaciente": "Ramirez",
+                "FechaCita": "2023-09-21T00:00:00.000Z",
+                "NombreEspecialidad": "Pediatría",
+                "NombreConsultorio": "Consultorio 7"
             }
         ]
       ```
 
 1.  Obten las consultas o citas para un paciente específico
 
-    - URL: `http://127.20.30.1:5005/api/get/citasporpaciente?usuario=74`
+    - URL: `http://127.20.30.1:5005/api/get/citasporpaciente?usuario=888888`
     - Método: `GET`
     - Datos de entrada (query): ID del usuario a consultar. Recuerda cambiar en la URL luego del `=` el id del usuario a consultar
     - Datos de salida:
 
       ```
-      [
-          {
-              "NombrePaciente": "Alejandra",
-              "ApellidoPaciente": "Mantilla",
-              "FechaCita": "2023-07-16T05:00:00.000Z",
-              "NombreConsultorio": "Consultorio 3",
-              "NombreEspecialidad": "Endocrinología",
-              "NombreMedico": "Pedro Pablo Martínez"
-          },
-          {
-              "NombrePaciente": "Alejandra",
-              "ApellidoPaciente": "Mantilla",
-              "FechaCita": "2023-07-20T05:00:00.000Z",
-              "NombreConsultorio": "Consultorio 3",
-              "NombreEspecialidad": "Endocrinología",
-              "NombreMedico": "Pedro Pablo Martínez"
-          }
-      ]
+        [
+            {
+                "_id": "64e506efe72253b25a7717f4",
+                "NombrePaciente": "María",
+                "ApellidoPaciente": "Rodriguez",
+                "FechaCita": "2023-07-12T00:00:00.000Z",
+                "NombreConsultorio": "Consultorio 1",
+                "NombreEspecialidad": "Cardiología",
+                "NombreMedico": "Juan Carlos Gómez"
+            },
+            {
+                "_id": "64e506f0e72253b25a771803",
+                "NombrePaciente": "María",
+                "ApellidoPaciente": "Rodriguez",
+                "FechaCita": "2023-07-17T00:00:00.000Z",
+                "NombreConsultorio": "Consultorio 6",
+                "NombreEspecialidad": "Pediatría",
+                "NombreMedico": "Roberto González"
+            },
+            {
+                "_id": "64e506f0e72253b25a771807",
+                "NombrePaciente": "María",
+                "ApellidoPaciente": "Rodriguez",
+                "FechaCita": "2023-07-18T00:00:00.000Z",
+                "NombreConsultorio": "Consultorio 10",
+                "NombreEspecialidad": "Cardiología",
+                "NombreMedico": "Andrea Suárez"
+            },
+            {
+                "_id": "64e506f0e72253b25a77180d",
+                "NombrePaciente": "María",
+                "ApellidoPaciente": "Rodriguez",
+                "FechaCita": "2023-07-20T00:00:00.000Z",
+                "NombreConsultorio": "Consultorio 6",
+                "NombreEspecialidad": "Oftalmología",
+                "NombreMedico": "Sara Elena García"
+            }
+        ]
       ```
 
 1.  Encuentra todas las citas para un día específico
 
-    - URL: `http://127.20.30.1:5005/api/get/citasporfecha?fecha=2023-07-15`
+    - URL: `http://127.20.30.1:5005/api/get/citasporfecha?fecha=2023-07-20`
     - Método: `GET`
     - Datos de entrada (query): Fecha a consultar. Recuerda cambiar en la URL luego del `=` la fecha a consultar
     - Datos de salida:
 
       ```
-      [
+        [
             {
-                "NombrePaciente": "Fabio",
-                "ApellidoPaciente": "Morales",
-                "FechaCita": "2023-07-15T05:00:00.000Z",
+                "_id": "64e506f0e72253b25a77180b",
+                "NombrePaciente": "Luis",
+                "ApellidoPaciente": "Gonzalez",
+                "FechaCita": "2023-07-20T00:00:00.000Z",
                 "EstadoCita": 2,
-                "NombreConsultorio": "Consultorio 2",
-                "NombreEspecialidad": "Dermatología",
-                "NombreMedico": "María Fernanda Rodríguez"
+                "NombreConsultorio": "Consultorio 4",
+                "NombreEspecialidad": "Gastroenterología",
+                "NombreMedico": "Ana Isabel Ramírez"
+            },
+            {
+                "_id": "64e506f0e72253b25a77180d",
+                "NombrePaciente": "María",
+                "ApellidoPaciente": "Rodriguez",
+                "FechaCita": "2023-07-20T00:00:00.000Z",
+                "EstadoCita": 2,
+                "NombreConsultorio": "Consultorio 6",
+                "NombreEspecialidad": "Oftalmología",
+                "NombreMedico": "Sara Elena García"
             }
-      ]
+        ]
       ```
 
 1.  Obten los médicos y sus consultorios
@@ -246,18 +339,18 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
         },
         {
             "NombreMedico": "Laura González",
-            "NombreConsultorio": "Consultorio 1"
+            "NombreConsultorio": "Consultorio 2"
         },
         {
             "NombreMedico": "María Fernanda Rodríguez",
-            "NombreConsultorio": "Consultorio 2"
+            "NombreConsultorio": "Consultorio 3"
         }
       ]
       ```
 
 1.  Cuenta el número de citas que un médico tiene en un día específico
 
-    - URL: `http://127.20.30.1:5005/api/get/contadordecitas?fecha=2023-07-14`
+    - URL: `http://127.20.30.1:5005/api/get/contadordecitas?fecha=2023-07-20&id_medico=97531`
     - Método: `GET`
     - Datos de entrada (query): ID del médico y la fecha a consultar. Recuerda cambiar en la URL luego del `=` el id del médico y la fecha a consultar
     - Datos de salida:
@@ -265,7 +358,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
       ```
         [
             {
-                "NumeroCitas": 10
+                "NumeroCitas": 1
             }
         ]
       ```
@@ -280,12 +373,14 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
       ```
         [
             {
+                "_id": "64e506f0e72253b25a77180c",
                 "NombrePaciente": "Laura",
                 "ApellidoPaciente": "Vargas",
                 "FechaCita": "2023-07-18T05:00:00.000Z",
                 "NombreConsultorio": "Consultorio 5"
             },
             {
+                "_id": "64e506f0e72253b25a77180c",
                 "NombrePaciente": "Laura",
                 "ApellidoPaciente": "Vargas",
                 "FechaCita": "2023-07-10T05:00:00.000Z",
