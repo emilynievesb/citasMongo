@@ -4,6 +4,7 @@ import {
   getDateByDate,
   getDatesAlph,
   getDatesByDoc,
+  getDatesByGender,
   getDatesByPatient,
   getDatesProx,
   getDocBySpeciality,
@@ -132,6 +133,16 @@ const getConsultorysPatientController = async (req, res, next) => {
   }
 };
 
+const getDatesByGenderController = async (req, res, next) => {
+  try {
+    const { genero } = req.query;
+    const result = await getDatesByGender(genero);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
@@ -143,4 +154,5 @@ export {
   getDatesByDateController,
   getConsultorysPatientController,
   getCountDatesByDocDateController,
+  getDatesByGenderController,
 };

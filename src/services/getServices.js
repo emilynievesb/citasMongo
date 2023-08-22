@@ -70,6 +70,13 @@ const getConsultorysPatient = async (usu_id) => {
   return result;
 };
 
+const getDatesByGender = async (genero) => {
+  const date = new DateUsu();
+  date.genero = genero.charAt(0).toUpperCase() + genero.slice(1);
+  const result = await date.getDatesByGender();
+  return result;
+};
+
 export {
   getDocBySpeciality,
   getDateByDate,
@@ -81,4 +88,5 @@ export {
   getDatesByDoc,
   getCountDatesByDocDate,
   getConsultorysPatient,
+  getDatesByGender,
 };

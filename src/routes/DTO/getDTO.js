@@ -98,6 +98,20 @@ const getConsultorysPatientDTO = async (req, res, next) => {
   }
 };
 
+const getDatesByGenderDTO = async (req, res, next) => {
+  try {
+    const productSchema = object({
+      genero: string()
+        .oneOf(["femenino", "masculino", "Femenino", "Masculino"])
+        .required(),
+    });
+    await productSchema.validate(req.query);
+    next();
+  } catch (error) {
+    res.status(400).json({ status: "fail", message: error.errors });
+  }
+};
+
 export {
   getDocBySpecialityDTO,
   getDatesProxDTO,
@@ -106,4 +120,5 @@ export {
   getDatesByDateDTO,
   getCountDatesByDocDateDTO,
   getConsultorysPatientDTO,
+  getDatesByGenderDTO,
 };

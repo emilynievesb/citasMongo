@@ -517,11 +517,6 @@ class DateUsu {
             $unwind: "$especialidad",
           },
           {
-            $match: {
-              "genero.gen_nombre": this.genero,
-            },
-          },
-          {
             $project: {
               NombrePaciente: "$usuario.usu_nombre",
               ApellidoPaciente: "$usuario.usu_primer_apellido_usuar",
@@ -530,6 +525,11 @@ class DateUsu {
               NombreConsultorio: "$consultorio.cons_nombre",
               NombreEspecialidad: "$especialidad.esp_nombre",
               NombreMedico: "$medico.med_nombreCompleto",
+            },
+          },
+          {
+            $match: {
+              GeneroPaciente: { $eq: String(this.genero) },
             },
           },
         ])

@@ -216,7 +216,7 @@ db.usuario.insertMany([
     usu_e_mail: "fabio478@outlook.es",
     usu_fechNAc: new Date("1999-01-01"),
     usu_tipodoc: 1,
-    usu_genero: 3,
+    usu_genero: 2,
     usu_acudiente: 2,
   },
   {
@@ -230,7 +230,7 @@ db.usuario.insertMany([
     usu_e_mail: "aleja78@outlook.es",
     usu_fechNAc: new Date("2015-03-21"),
     usu_tipodoc: 3,
-    usu_genero: 3,
+    usu_genero: 1,
     usu_acudiente: 3,
   },
   {
@@ -272,7 +272,7 @@ db.usuario.insertMany([
     usu_e_mail: "carlospg@gmail.com",
     usu_fechNAc: new Date("1985-09-02"),
     usu_tipodoc: 3,
-    usu_genero: 3,
+    usu_genero: 2,
     usu_acudiente: null,
   },
   {
@@ -314,7 +314,7 @@ db.usuario.insertMany([
     usu_e_mail: "juangc@gmail.com",
     usu_fechNAc: new Date("1995-12-04"),
     usu_tipodoc: 3,
-    usu_genero: 3,
+    usu_genero: 2,
     usu_acudiente: null,
   },
   {
@@ -356,7 +356,7 @@ db.usuario.insertMany([
     usu_e_mail: "carolpg@gmail.com",
     usu_fechNAc: new Date("2010-07-25"),
     usu_tipodoc: 3,
-    usu_genero: 3,
+    usu_genero: 1,
     usu_acudiente: 6,
   },
 ]);
