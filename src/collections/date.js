@@ -171,6 +171,14 @@ class DateUsu {
           },
           {
             $lookup: {
+              from: "medico",
+              localField: "cit_medico",
+              foreignField: "med_nroMatriculaProfesional",
+              as: "medico",
+            },
+          },
+          {
+            $lookup: {
               from: "usuario",
               localField: "cit_datosUsuario",
               foreignField: "usu_id",

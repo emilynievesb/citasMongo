@@ -409,14 +409,14 @@ db.cita.insertMany([
   {
     cit_codigo: 2,
     cit_fecha: new Date("2023-07-12"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 2,
     cit_medico: 54321,
     cit_datosUsuario: 999999,
   },
   {
     cit_codigo: 3,
     cit_fecha: new Date("2023-07-12"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 2,
     cit_medico: 98765,
     cit_datosUsuario: 101010,
   },
@@ -430,7 +430,7 @@ db.cita.insertMany([
   {
     cit_codigo: 5,
     cit_fecha: new Date("2023-07-13"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 2,
     cit_medico: 13579,
     cit_datosUsuario: 121212,
   },
@@ -444,7 +444,7 @@ db.cita.insertMany([
   {
     cit_codigo: 7,
     cit_fecha: new Date("2023-07-14"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 2,
     cit_medico: 86420,
     cit_datosUsuario: 123,
   },
