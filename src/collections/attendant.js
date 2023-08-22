@@ -1,4 +1,3 @@
-import autoIncrementID from "../utils/autoIncrement.js";
 import connection from "../utils/connect.js";
 
 class Attendant {
