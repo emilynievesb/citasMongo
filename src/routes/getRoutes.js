@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  getCountDatesByDocDateController,
   getDatesAlphController,
   getDatesByDateController,
   getDatesByDocController,
@@ -10,6 +11,7 @@ import {
   getPatientsAlphController,
 } from "../controllers/getControllers.js";
 import {
+  getCountDatesByDocDateDTO,
   getDatesByDateDTO,
   getDatesByDocDTO,
   getDatesByPatientDTO,
@@ -35,6 +37,11 @@ const getInitRoute = () => {
   );
   router.get("/citasporfecha", getDatesByDateDTO, getDatesByDateController);
   router.get("/medicosyconsultorios", getDoctorsConsulController);
+  router.get(
+    "/contadordecitas",
+    getCountDatesByDocDateDTO,
+    getCountDatesByDocDateController
+  );
   return router;
 };
 

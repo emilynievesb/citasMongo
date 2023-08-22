@@ -55,6 +55,14 @@ const getDoctorsConsul = async () => {
   return result;
 };
 
+const getCountDatesByDocDate = async (med_id, fecha) => {
+  const date = new DateUsu();
+  date.med_id = med_id;
+  date.fecha = fecha;
+  const result = await date.getCountDatesByDocDate();
+  return result;
+};
+
 export {
   getDocBySpeciality,
   getDateByDate,
@@ -64,4 +72,5 @@ export {
   getDatesProx,
   getDoctorsConsul,
   getDatesByDoc,
+  getCountDatesByDocDate,
 };

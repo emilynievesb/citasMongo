@@ -378,8 +378,8 @@ class DateUsu {
         .aggregate([
           {
             $match: {
-              cit_medico: this.med_id,
-              cit_fecha: this.fecha,
+              cit_medico: Number(this.med_id),
+              cit_fecha: new Date(this.fecha),
             },
           },
           {

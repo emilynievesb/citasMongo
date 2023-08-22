@@ -1,4 +1,5 @@
 import {
+  getCountDatesByDocDate,
   getDateByDate,
   getDatesAlph,
   getDatesByDoc,
@@ -106,6 +107,16 @@ const getDoctorsConsulController = async (req, res, next) => {
   }
 };
 
+const getCountDatesByDocDateController = async (req, res, next) => {
+  try {
+    const { id_medico, fecha } = req.query;
+    const result = await getCountDatesByDocDate(id_medico, fecha);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
@@ -115,4 +126,5 @@ export {
   getDatesByPatientController,
   getDoctorsConsulController,
   getDatesByDateController,
+  getCountDatesByDocDateController,
 };
