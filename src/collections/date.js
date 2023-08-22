@@ -164,7 +164,7 @@ class Date {
         .aggregate([
           {
             $match: {
-              cit_medico: this.med_id,
+              cit_medico: Number(this.med_id),
               cit_estadoCita: 2,
             },
           },
@@ -179,7 +179,7 @@ class Date {
           {
             $lookup: {
               from: "consultorio",
-              localField: "medico.med_consultario",
+              localField: "medico.med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },

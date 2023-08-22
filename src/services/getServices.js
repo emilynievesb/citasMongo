@@ -29,4 +29,17 @@ const getDatesProx = async (usu_id) => {
   return result;
 };
 
-export { getDocBySpeciality, getPatientsAlph, getDatesAlph, getDatesProx };
+const getDatesByDoc = async (med_id) => {
+  const date = new Date();
+  date.med_id = med_id;
+  const result = await date.getDatesDoc();
+  return result;
+};
+
+export {
+  getDocBySpeciality,
+  getPatientsAlph,
+  getDatesAlph,
+  getDatesProx,
+  getDatesByDoc,
+};

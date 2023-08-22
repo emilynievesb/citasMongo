@@ -1,5 +1,6 @@
 import {
   getDatesAlph,
+  getDatesByDoc,
   getDatesProx,
   getDocBySpeciality,
   getPatientsAlph,
@@ -51,9 +52,24 @@ const getDatesProxController = async (req, res, next) => {
   }
 };
 
+const getDatesByDocController = async (req, res, next) => {
+  try {
+    const { id_medico } = req.query;
+    const result = await getDatesByDoc(id_medico);
+    // if (result.length === 0) {
+    //   res.status(404).json("No tiene citas confirmadas");
+    //   return;
+    // }
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
   getDatesAlphController,
   getDatesProxController,
+  getDatesByDocController,
 };
