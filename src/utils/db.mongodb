@@ -507,14 +507,14 @@ db.cita.insertMany([
   {
     cit_codigo: 16,
     cit_fecha: new Date("2023-07-17"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 8,
     cit_medico: 65432,
     cit_datosUsuario: 888888,
   },
   {
     cit_codigo: 17,
     cit_fecha: new Date("2023-07-17"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 8,
     cit_medico: 98761,
     cit_datosUsuario: 101010,
   },
@@ -605,7 +605,7 @@ db.cita.insertMany([
   {
     cit_codigo: 30,
     cit_fecha: new Date("2023-08-28"),
-    cit_estadoCita: 1,
+    cit_estadoCita: 8,
     cit_medico: 10293,
     cit_datosUsuario: 888888,
   },

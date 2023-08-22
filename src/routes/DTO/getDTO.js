@@ -112,6 +112,18 @@ const getDatesByGenderDTO = async (req, res, next) => {
   }
 };
 
+const getDatesSuspendByMontDTO = async (req, res, next) => {
+  try {
+    const productSchema = object({
+      mes: number().min(1).max(12).required(),
+    });
+    await productSchema.validate(req.query);
+    next();
+  } catch (error) {
+    res.status(400).json({ status: "fail", message: error.errors });
+  }
+};
+
 export {
   getDocBySpecialityDTO,
   getDatesProxDTO,
@@ -121,4 +133,5 @@ export {
   getCountDatesByDocDateDTO,
   getConsultorysPatientDTO,
   getDatesByGenderDTO,
+  getDatesSuspendByMontDTO,
 };

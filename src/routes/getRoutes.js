@@ -8,6 +8,7 @@ import {
   getDatesByGenderController,
   getDatesByPatientController,
   getDatesProxController,
+  getDatesSuspendByMontController,
   getDocBySpecialityController,
   getDoctorsConsulController,
   getPatientsAlphController,
@@ -20,6 +21,7 @@ import {
   getDatesByGenderDTO,
   getDatesByPatientDTO,
   getDatesProxDTO,
+  getDatesSuspendByMontDTO,
   getDocBySpecialityDTO,
 } from "./DTO/getDTO.js";
 
@@ -55,6 +57,11 @@ const getInitRoute = () => {
     "/citasporgenero",
     getDatesByGenderDTO,
     getDatesByGenderController
+  );
+  router.get(
+    "/citasrechazas",
+    getDatesSuspendByMontDTO,
+    getDatesSuspendByMontController
   );
   return router;
 };

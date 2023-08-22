@@ -7,6 +7,7 @@ import {
   getDatesByGender,
   getDatesByPatient,
   getDatesProx,
+  getDatesSuspendByMont,
   getDocBySpeciality,
   getDoctorsConsul,
   getPatientsAlph,
@@ -143,6 +144,20 @@ const getDatesByGenderController = async (req, res, next) => {
   }
 };
 
+const getDatesSuspendByMontController = async (req, res, next) => {
+  try {
+    const { mes } = req.query;
+    const result = await getDatesSuspendByMont(mes);
+    if (result.length === 0) {
+      res.status(200).json("No existen consultas suspendidas en ese mes");
+      return;
+    }
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
@@ -155,4 +170,5 @@ export {
   getConsultorysPatientController,
   getCountDatesByDocDateController,
   getDatesByGenderController,
+  getDatesSuspendByMontController,
 };
