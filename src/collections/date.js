@@ -1,5 +1,5 @@
 import connection from "../utils/connect.js";
-class Date {
+class DateUsu {
   cit_codigo;
   cit_fecha;
   cit_estadoCita;
@@ -151,10 +151,11 @@ class Date {
           },
         ])
         .toArray();
+
       console.log(resultado);
       return resultado;
     } catch (error) {
-      throw error;
+      throw error.message;
     }
   }
   async getDatesDoc() {
@@ -583,4 +584,4 @@ class Date {
   }
 }
 
-export { Date };
+export { DateUsu };

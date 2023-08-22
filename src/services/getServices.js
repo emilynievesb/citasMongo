@@ -1,4 +1,4 @@
-import { Date } from "../collections/date.js";
+import { DateUsu } from "../collections/date.js";
 import { Doctor } from "../collections/doctor.js";
 import { Patient } from "../collections/patient.js";
 
@@ -17,33 +17,33 @@ const getPatientsAlph = async () => {
 };
 
 const getDatesAlph = async () => {
-  const date = new Date();
+  const date = new DateUsu();
   const result = await date.getDatesAlf();
   return result;
 };
 
 const getDatesProx = async (usu_id) => {
-  const date = new Date();
+  const date = new DateUsu();
   date.usu_id = usu_id;
   const result = await date.getDateProx();
   return result;
 };
 
 const getDatesByDoc = async (med_id) => {
-  const date = new Date();
+  const date = new DateUsu();
   date.med_id = med_id;
   const result = await date.getDatesDoc();
   return result;
 };
 
 const getDatesByPatient = async (usu_id) => {
-  const date = new Date();
+  const date = new DateUsu();
   date.usu_id = usu_id;
   const result = await date.getDatePatient();
   return result;
 };
 const getDateByDate = async (fecha) => {
-  const date = new Date();
+  const date = new DateUsu();
   date.fecha = fecha;
   const result = await date.getDatesByDate();
   return result;
