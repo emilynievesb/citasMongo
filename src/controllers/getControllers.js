@@ -1,6 +1,7 @@
 import {
   getDatesAlph,
   getDatesByDoc,
+  getDatesByPatient,
   getDatesProx,
   getDocBySpeciality,
   getPatientsAlph,
@@ -66,10 +67,25 @@ const getDatesByDocController = async (req, res, next) => {
   }
 };
 
+const getDatesByPatientController = async (req, res, next) => {
+  try {
+    const { usuario } = req.query;
+    const result = await getDatesByPatient(usuario);
+    // if (result.length === 0) {
+    //   res.status(404).json("Este paciente no tiene citas o no existe");
+    //   return;
+    // }
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
   getDatesAlphController,
   getDatesProxController,
   getDatesByDocController,
+  getDatesByPatientController,
 };

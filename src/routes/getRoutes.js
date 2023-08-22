@@ -2,12 +2,14 @@ import { Router } from "express";
 import {
   getDatesAlphController,
   getDatesByDocController,
+  getDatesByPatientController,
   getDatesProxController,
   getDocBySpecialityController,
   getPatientsAlphController,
 } from "../controllers/getControllers.js";
 import {
   getDatesByDocDTO,
+  getDatesByPatientDTO,
   getDatesProxDTO,
   getDocBySpecialityDTO,
 } from "./DTO/getDTO.js";
@@ -23,6 +25,11 @@ const getInitRoute = () => {
   router.get("/citasalfabeticamente", getDatesAlphController);
   router.get("/citaproxima", getDatesProxDTO, getDatesProxController);
   router.get("/citaspormedico", getDatesByDocDTO, getDatesByDocController);
+  router.get(
+    "/citasporpaciente",
+    getDatesByPatientDTO,
+    getDatesByPatientController
+  );
   return router;
 };
 
