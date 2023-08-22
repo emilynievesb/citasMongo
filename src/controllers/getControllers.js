@@ -73,10 +73,10 @@ const getDatesByPatientController = async (req, res, next) => {
   try {
     const { usuario } = req.query;
     const result = await getDatesByPatient(usuario);
-    // if (result.length === 0) {
-    //   res.status(404).json("Este paciente no tiene citas o no existe");
-    //   return;
-    // }
+    if (result.length === 0) {
+      res.status(404).json("Este paciente no tiene citas o no existe");
+      return;
+    }
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json(error);
@@ -87,10 +87,10 @@ const getDatesByDateController = async (req, res, next) => {
   try {
     const { fecha } = req.query;
     const result = await getDateByDate(fecha);
-    // if (result.length === 0) {
-    //   res.status(404).json("No hay fechas confirmadas para ese día");
-    //   return;
-    // }
+    if (result.length === 0) {
+      res.status(404).json("No hay fechas confirmadas para ese día");
+      return;
+    }
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json(error);

@@ -2,7 +2,7 @@ import connection from "../utils/connect.js";
 class Doctor {
   med_nroMatriculaProsional;
   med_nombreCompleto;
-  med_consultario;
+  med_consultorio;
   med_especialidad;
   esp_nombre;
   constructor() {}
@@ -54,7 +54,7 @@ class Doctor {
           {
             $lookup: {
               from: "consultorio",
-              localField: "med_consultario",
+              localField: "med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },
