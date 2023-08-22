@@ -1,5 +1,6 @@
 import {
   getDatesAlph,
+  getDatesProx,
   getDocBySpeciality,
   getPatientsAlph,
 } from "../services/getServices.js";
@@ -27,7 +28,6 @@ const getPatientsAlphController = async (req, res, next) => {
   }
 };
 
-
 const getDatesAlphController = async (req, res, next) => {
   try {
     const result = await getDatesAlph();
@@ -37,4 +37,23 @@ const getDatesAlphController = async (req, res, next) => {
   }
 };
 
-export { getDocBySpecialityController, getPatientsAlphController, getDatesAlphController };
+const getDatesProxController = async (req, res, next) => {
+  try {
+    const { usuario } = req.query;
+    const result = await getDatesProx(usuario);
+    // if (result.length !== 1) {
+    //   res.status(404).json("El usuario no tiene citas programadas");
+    //   return;
+    // }
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export {
+  getDocBySpecialityController,
+  getPatientsAlphController,
+  getDatesAlphController,
+  getDatesProxController,
+};

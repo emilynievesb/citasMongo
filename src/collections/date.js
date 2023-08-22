@@ -91,7 +91,7 @@ class Date {
         .aggregate([
           {
             $match: {
-              cit_datosUsuario: this.usu_id,
+              cit_datosUsuario: { $eq: Number(this.usu_id) },
               cit_fecha: { $gte: new Date() },
             },
           },
@@ -107,7 +107,7 @@ class Date {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
@@ -151,6 +151,7 @@ class Date {
           },
         ])
         .toArray();
+      console.log(resultado);
       return resultado;
     } catch (error) {
       throw error;
