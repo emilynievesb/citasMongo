@@ -1,4 +1,5 @@
 import {
+  getDateByDate,
   getDatesAlph,
   getDatesByDoc,
   getDatesByPatient,
@@ -81,6 +82,20 @@ const getDatesByPatientController = async (req, res, next) => {
   }
 };
 
+const getDatesByDateController = async (req, res, next) => {
+  try {
+    const { fecha } = req.query;
+    const result = await getDateByDate(fecha);
+    // if (result.length === 0) {
+    //   res.status(404).json("No hay fechas confirmadas para ese día");
+    //   return;
+    // }
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 export {
   getDocBySpecialityController,
   getPatientsAlphController,
@@ -88,4 +103,5 @@ export {
   getDatesProxController,
   getDatesByDocController,
   getDatesByPatientController,
+  getDatesByDateController,
 };
