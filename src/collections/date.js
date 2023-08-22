@@ -234,7 +234,7 @@ class DateUsu {
         .aggregate([
           {
             $match: {
-              cit_datosUsuario: this.usu_id,
+              cit_datosUsuario: Number(this.usu_id),
             },
           },
           {
@@ -249,14 +249,14 @@ class DateUsu {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
           {
             $lookup: {
               from: "consultorio",
-              localField: "medico.med_consultario",
+              localField: "medico.med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },
@@ -321,14 +321,14 @@ class DateUsu {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
           {
             $lookup: {
               from: "consultorio",
-              localField: "medico.med_consultario",
+              localField: "medico.med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },
@@ -415,14 +415,14 @@ class DateUsu {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
           {
             $lookup: {
               from: "consultorio",
-              localField: "medico.med_consultario",
+              localField: "medico.med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },
@@ -473,7 +473,7 @@ class DateUsu {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
@@ -488,7 +488,7 @@ class DateUsu {
           {
             $lookup: {
               from: "consultorio",
-              localField: "medico.med_consultario",
+              localField: "medico.med_consultorio",
               foreignField: "cons_codigo",
               as: "consultorio",
             },
@@ -565,7 +565,7 @@ class DateUsu {
             $lookup: {
               from: "medico",
               localField: "cit_medico",
-              foreignField: "med_nroMatriculaProsional",
+              foreignField: "med_nroMatriculaProfesional",
               as: "medico",
             },
           },
