@@ -399,7 +399,7 @@ class DateUsu {
         .aggregate([
           {
             $match: {
-              cit_datosUsuario: this.usu_id,
+              cit_datosUsuario: Number(this.usu_id),
               cit_estadoCita: 5,
             },
           },
