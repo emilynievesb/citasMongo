@@ -10,7 +10,12 @@ class DateUsu {
   fecha;
   genero;
   mes;
-  constructor() {}
+  constructor() {
+    this.cit_fecha = "2023-25-10";
+    this.cit_estadoCita = 5;
+    this.cit_medico = 888888;
+    this.cit_datosUsuario = 10974880148;
+  }
   async connect() {
     try {
       const result = await connection("cita");

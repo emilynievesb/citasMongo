@@ -25,6 +25,12 @@ import {
   getDocBySpecialityDTO,
 } from "./DTO/getDTO.js";
 import { limitPets, limitSize } from "../utils/limit.js";
+import {
+  authorizationMiddleware,
+  contentMiddlewareDateUsu,
+  contentMiddlewareDoctor,
+  contentMiddlewarePatient,
+} from "../utils/token.js";
 
 const getInitRoute = () => {
   const router = Router();
@@ -32,6 +38,8 @@ const getInitRoute = () => {
     "/medicosporespecialidad",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDoctor,
     getDocBySpecialityDTO,
     getDocBySpecialityController
   );
@@ -39,18 +47,24 @@ const getInitRoute = () => {
     "/pacientesalfabeticamente",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewarePatient,
     getPatientsAlphController
   );
   router.get(
     "/citasalfabeticamente",
     limitPets,
     limitSize,
+    contentMiddlewareDateUsu,
+    authorizationMiddleware,
     getDatesAlphController
   );
   router.get(
     "/citaproxima",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesProxDTO,
     getDatesProxController
   );
@@ -58,6 +72,8 @@ const getInitRoute = () => {
     "/citaspormedico",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesByDocDTO,
     getDatesByDocController
   );
@@ -65,6 +81,8 @@ const getInitRoute = () => {
     "/citasporpaciente",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesByPatientDTO,
     getDatesByPatientController
   );
@@ -72,6 +90,8 @@ const getInitRoute = () => {
     "/citasporfecha",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesByDateDTO,
     getDatesByDateController
   );
@@ -79,12 +99,16 @@ const getInitRoute = () => {
     "/medicosyconsultorios",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDoctor,
     getDoctorsConsulController
   );
   router.get(
     "/contadordecitas",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getCountDatesByDocDateDTO,
     getCountDatesByDocDateController
   );
@@ -92,6 +116,8 @@ const getInitRoute = () => {
     "/consultoriosdepacientes",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getConsultorysPatientDTO,
     getConsultorysPatientController
   );
@@ -99,6 +125,8 @@ const getInitRoute = () => {
     "/citasporgenero",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesByGenderDTO,
     getDatesByGenderController
   );
@@ -106,6 +134,8 @@ const getInitRoute = () => {
     "/citasrechazas",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewareDateUsu,
     getDatesSuspendByMontDTO,
     getDatesSuspendByMontController
   );

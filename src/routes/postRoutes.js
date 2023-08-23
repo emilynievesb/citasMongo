@@ -8,6 +8,8 @@ const postInitRoute = () => {
     "/agregarpaciente",
     limitPets,
     limitSize,
+    authorizationMiddleware,
+    contentMiddlewarePatient,
     postPatientDTO,
     postPatientController
   );

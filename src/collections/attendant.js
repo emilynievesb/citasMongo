@@ -5,7 +5,11 @@ class Attendant {
   acu_nombreCompleto;
   acu_telefono;
   acu_direccion;
-  constructor() {}
+  constructor() {
+    this.acu_nombreCompleto = "Alguien";
+    this.acu_telefono = 316484155;
+    this.acu_direccion = "Una casa";
+  }
   async connect() {
     try {
       const result = await connection("acudiente");

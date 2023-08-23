@@ -1,11 +1,16 @@
 import connection from "../utils/connect.js";
 class Doctor {
-  med_nroMatriculaProsional;
+  med_nroMatriculaProfesional;
   med_nombreCompleto;
   med_consultorio;
   med_especialidad;
   esp_nombre;
-  constructor() {}
+  constructor() {
+    this.med_nroMatriculaProfesional = 888888;
+    this.med_nombreCompleto = "Antonio Apellido";
+    this.med_consultorio = 5;
+    this.med_especialidad = 1;
+  }
   async connect() {
     try {
       const result = await connection("medico");

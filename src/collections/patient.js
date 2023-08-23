@@ -13,7 +13,18 @@ class Patient {
   usu_tipodoc;
   usu_genero;
   usu_acudiente;
-  constructor() { }
+  constructor() {
+    this.usu_nombre = "Emily";
+    this.usu_segdo_nombre = "Julieth";
+    this.usu_primer_apellido_usuar = "Nieves";
+    this.usu_segdo_apellido_usuar = "Badillo";
+    this.usu_telefono = 316484155;
+    this.usu_e_mail = "nemily1710@gmail.com";
+    this.usu_fechNac = "2022-10-12";
+    this.usu_tipodoc = 2;
+    this.usu_genero = 1;
+    this.usu_acudiente = 1333;
+  }
   async connect() {
     try {
       const result = await connection("usuario");
