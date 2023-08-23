@@ -34,6 +34,10 @@ Para ejecutar correctamente el servidor debes asegurarte de tener `nodemon`, ya 
 
         npm run dev
 
+## Autorización
+
+Para ejecutar correctamente los endpoints, debes obtener el token de cada tabla antes de hacer la consulta, por lo que en el apartado de los endpoints dejaremos escrita la url a ejecutar antes, y debes copiar el token en el header de autorización.
+
 ## Endpoints
 
 Para este proyecto se desarrollaron los siguiente endpoints diseñados para manipular la base de datos esperando los parametros por el body de la petición.
@@ -44,6 +48,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten todos los médicos de una especialidad específica
 
+    - Authorization: `http://127.20.20.1:5000/api/token/medico`
     - URL: `http://127.20.30.1:5005/api/get/medicosporespecialidad?especialidad=Cardiología`
     - Método: `GET`
     - Datos de entrada (query): Nombre de la especialidad a consultar. Recuerda cambiar en la URL luego del `=` el nombre de la especialidad a consultar
@@ -70,6 +75,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten todos los pacientes alfabéticamente
 
+    - Authorization: `http://127.20.20.1:5000/api/token/paciente`
     - URL: `http://127.20.30.1:5005/api/get/pacientesalfabeticamente`
     - Método: `GET`
     - Datos de entrada: Ninguna
@@ -122,6 +128,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten todas las citas alfabéticamente
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citasalfabeticamente`
     - Método: `GET`
     - Datos de entrada: Ninguno.
@@ -194,6 +201,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Encontra la próxima cita para un paciente específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citaproxima?usuario=888888`
     - Método: `GET`
     - Datos de entrada (query): ID del usuario a consultar. Recuerda cambiar en la URL luego del `=` el id del usuario a consultar
@@ -218,6 +226,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Encuentra todos los pacientes que tienen citas con un médico específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citaspormedico?id_medico=86420`
     - Método: `GET`
     - Datos de entrada (query): ID del medico a consultar. Recuerda cambiar en la URL luego del `=` el id del medico a consultar
@@ -246,6 +255,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten las consultas o citas para un paciente específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citasporpaciente?usuario=888888`
     - Método: `GET`
     - Datos de entrada (query): ID del usuario a consultar. Recuerda cambiar en la URL luego del `=` el id del usuario a consultar
@@ -294,6 +304,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Encuentra todas las citas para un día específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citasporfecha?fecha=2023-07-20`
     - Método: `GET`
     - Datos de entrada (query): Fecha a consultar. Recuerda cambiar en la URL luego del `=` la fecha a consultar
@@ -326,6 +337,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten los médicos y sus consultorios
 
+    - Authorization: `http://127.20.20.1:5000/api/token/medico`
     - URL: `http://127.20.30.1:5005/api/get/medicosyconsultorios`
     - Método: `GET`
     - Datos de entrada (query): Ninguno.
@@ -350,6 +362,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Cuenta el número de citas que un médico tiene en un día específico
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/contadordecitas?fecha=2023-07-20&id_medico=97531`
     - Método: `GET`
     - Datos de entrada (query): ID del médico y la fecha a consultar. Recuerda cambiar en la URL luego del `=` el id del médico y la fecha a consultar
@@ -365,6 +378,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obten los consultorio donde se aplicó las citas de un paciente
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/consultoriosdepacientes?usuario=666666`
     - Método: `GET`
     - Datos de entrada (query): ID del usuario a consultar. Recuerda cambiar en la URL luego del `=` el id del usuario a consultar
@@ -391,6 +405,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Obtener todas las citas realizadas por los pacientes de un genero si su estado de la cita fue atendido
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citasporgenero?genero=Femenino`
     - Método: `GET`
     - Datos de entrada (query): El género a consultar. Recuerda cambiar en la URL luego del `=` el género a consultar
@@ -412,23 +427,24 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Insertar un paciente a la tabla usuario pero si es menor de edad solicitar primero que ingrese el acudiente y validar si ya estaba registrado el acudiente.
 
-        - URL: `http://127.20.30.1:5005/api/post/agregarpaciente`
-        - Método: `POST`
-        - Datos de entrada (body):
-          `Los datos de entrada para un paciente deben ser:`
-          `       {
-        "documento": 1098787,
-        "primer_nombre": "Emily",
-        "segundo_nombre": "J",
-        "primer_apellido": "Nieves",
-        "segundo_apellido": "B",
-        "telefono": 3166666,
-        "direccion": "calle",
-        "email": "emily@bml.com",
-        "fecha_nacimiento": "2012-10-04",
-        "id_tipo_documento": 1,
-        "id_genero": 2,
-        "doc_acudiente": null
+    - Authorization: `http://127.20.20.1:5000/api/token/paciente`
+    - URL: `http://127.20.30.1:5005/api/post/agregarpaciente`
+    - Método: `POST`
+    - Datos de entrada (body):
+      `Los datos de entrada para un paciente deben ser:`
+      ` {
+      "documento": 1098787,
+      "primer_nombre": "Emily",
+      "segundo_nombre": "J",
+      "primer_apellido": "Nieves",
+      "segundo_apellido": "B",
+      "telefono": 3166666,
+      "direccion": "calle",
+      "email": "emily@bml.com",
+      "fecha_nacimiento": "2012-10-04",
+      "id_tipo_documento": 1,
+      "id_genero": 2,
+      "doc_acudiente": null
 
     }`
 
@@ -459,6 +475,7 @@ Los datos acontinuación son netamente ejemplos de lo que podrían contener los 
 
 1.  Mostrar todas las citas que fueron rechazadas y en un mes específico, mostrar la fecha de la cita, el nombre del usuario y el médico.
 
+    - Authorization: `http://127.20.20.1:5000/api/token/cita`
     - URL: `http://127.20.30.1:5005/api/get/citasrechazas?mes=07`
     - Método: `GET`
     - Datos de entrada (query): El mes a consultar. Recuerda cambiar en la URL luego del `=` el mes a consultar
