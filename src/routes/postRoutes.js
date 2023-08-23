@@ -4,7 +4,13 @@ import { postPatientController } from "../controllers/postControllers.js";
 
 const postInitRoute = () => {
   const router = Router();
-  router.post("/agregarpaciente", postPatientDTO, postPatientController);
+  router.post(
+    "/agregarpaciente",
+    limitPets,
+    limitSize,
+    postPatientDTO,
+    postPatientController
+  );
   return router;
 };
 
